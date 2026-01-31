@@ -1,0 +1,22 @@
+{{define "minion-row"}}
+<div class="minion-row" id="minion-{{.ID}}">
+    <div class="stats">
+        <div class="stat"><strong>Name</strong> {{.Name}}</div>
+        <div class="stat{{if le .HP (div .MaxHP 2)}} hp-low{{end}}" id="hp-stat-{{.ID}}" style="cursor:pointer;"
+             hx-get="/minions/{{.ID}}/hp/adjust" hx-target="#hp-stat-{{.ID}}" hx-swap="outerHTML">
+            <strong>HP</strong> {{.HP}}/{{.MaxHP}}
+        </div>
+        <div class="stat"><strong>AC</strong> {{.AC}}</div>
+        <div class="stat"><strong>Atk</strong> +{{.Attack}}</div>
+        <div class="stat"><strong>Dmg</strong> {{.Damage}}</div>
+        {{if .Notes}}<div class="stat"><strong>Notes</strong> {{.Notes}}</div>{{end}}
+    </div>
+    <div style="margin-top:0.5rem; display:flex; gap:0.5rem;">
+        <button class="outline secondary" style="padding:0.25rem 0.5rem; font-size:0.8rem;"
+            hx-get="/minions/{{.ID}}/edit" hx-target="#minion-{{.ID}}" hx-swap="outerHTML">Edit</button>
+        <button class="outline secondary" style="padding:0.25rem 0.5rem; font-size:0.8rem;"
+            hx-delete="/minions/{{.ID}}" hx-target="#minion-{{.ID}}" hx-swap="outerHTML"
+            hx-confirm="Dismiss this minion?">Dismiss</button>
+    </div>
+</div>
+{{end}}

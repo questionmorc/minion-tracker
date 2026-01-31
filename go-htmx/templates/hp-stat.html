@@ -1,0 +1,6 @@
+{{define "hp-stat"}}
+<div class="stat{{if le .HP (div .MaxHP 2)}} hp-low{{end}}" id="hp-stat-{{.ID}}" style="cursor:pointer;"
+     hx-get="/minions/{{.ID}}/hp/adjust" hx-target="#hp-stat-{{.ID}}" hx-swap="outerHTML">
+    <strong>HP</strong> {{.HP}}/{{.MaxHP}}
+</div>
+{{end}}

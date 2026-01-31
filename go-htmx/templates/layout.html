@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Minion Tracker</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+    <style>
+        .minion-row { border: 1px solid var(--pico-muted-border-color); border-radius: 8px; padding: 1rem; margin-bottom: 0.5rem; }
+        .minion-row .stats { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .minion-row .stat { font-size: 0.9rem; }
+        .minion-row .stat strong { display: block; font-size: 0.75rem; text-transform: uppercase; color: var(--pico-muted-color); }
+        .hp-low { color: var(--pico-del-color); }
+    </style>
+</head>
+<body>
+<main class="container">
+    <h1>Minion Tracker</h1>
+
+    <section id="spawn-form">
+        {{template "minion-form" .}}
+    </section>
+
+    <section id="minion-list">
+        {{range .Minions}}
+            {{template "minion-row" .}}
+        {{end}}
+    </section>
+</main>
+</body>
+</html>

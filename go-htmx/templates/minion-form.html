@@ -1,0 +1,16 @@
+{{define "minion-form"}}
+<form hx-post="/minions" hx-target="#minion-list" hx-swap="beforeend" hx-on::after-request="this.reset()">
+    <fieldset role="group">
+        <input name="name" placeholder="Name" required>
+        <input name="hp" type="number" placeholder="HP" required style="width:5rem">
+        <input name="ac" type="number" placeholder="AC" required style="width:5rem">
+        <input name="attack" type="number" placeholder="Atk" required style="width:5rem">
+        <input name="damage" placeholder="Damage (e.g. 1d6+3)" style="width:10rem">
+    </fieldset>
+    <details>
+        <summary>Notes</summary>
+        <textarea name="notes" placeholder="Special abilities, resistances, etc."></textarea>
+    </details>
+    <button type="submit">Spawn Minion</button>
+</form>
+{{end}}

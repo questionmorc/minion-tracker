@@ -1,0 +1,62 @@
+@import url('https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css');
+
+/* Custom styles for minion cards */
+.minion-row {
+  border: 1px solid var(--pico-muted-border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  transition: box-shadow 0.2s ease;
+}
+
+.minion-row:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.minion-row .stats {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.minion-row .stat {
+  font-size: 0.9rem;
+}
+
+.minion-row .stat strong {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--pico-muted-color);
+}
+
+.hp-low {
+  color: var(--pico-del-color);
+}
+
+.hp-stat {
+  cursor: pointer;
+  user-select: none;
+}
+
+.hp-stat:hover {
+  opacity: 0.8;
+}
+
+.hp-adjust-form {
+  display: inline-flex;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.hp-adjust-form input {
+  width: 4rem;
+  padding: 0.25rem 0.5rem;
+  margin: 0;
+}
+
+.hp-adjust-form button {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  margin: 0;
+}

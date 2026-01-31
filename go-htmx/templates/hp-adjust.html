@@ -1,0 +1,32 @@
+{{define "hp-adjust"}}
+<div class="stat{{if le .HP (div .MaxHP 2)}} hp-low{{end}}" id="hp-stat-{{.ID}}">
+    <strong>HP</strong>
+    <form style="display:inline-flex; gap:0.25rem; align-items:center;">
+        <input name="amount" type="number" placeholder="Amount" min="1" autofocus required
+               style="width:4rem; padding:0.25rem 0.5rem; margin:0;">
+        <button type="button"
+                hx-post="/minions/{{.ID}}/hp/heal"
+                hx-include="[name='amount']"
+                hx-target="#minion-{{.ID}}"
+                hx-swap="outerHTML"
+                style="padding:0.25rem 0.5rem; font-size:0.75rem; margin:0;">
+            Heal
+        </button>
+        <button type="button"
+                hx-post="/minions/{{.ID}}/hp/dmg"
+                hx-include="[name='amount']"
+                hx-target="#minion-{{.ID}}"
+                hx-swap="outerHTML"
+                style="padding:0.25rem 0.5rem; font-size:0.75rem; margin:0;">
+            Dmg
+        </button>
+        <button type="button" class="outline secondary"
+                hx-get="/minions/{{.ID}}/hp/cancel"
+                hx-target="#hp-stat-{{.ID}}"
+                hx-swap="outerHTML"
+                style="padding:0.25rem 0.5rem; font-size:0.75rem; margin:0;">
+            ✕
+        </button>
+    </form>
+</div>
+{{end}}
